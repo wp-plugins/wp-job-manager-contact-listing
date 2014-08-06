@@ -1,13 +1,13 @@
 === WP Job Manager - Contact Listing ===
 
 Author URI: http://astoundify.com
-Plugin URI: https://github.com/Astoundify/wp-job-manager-contact-listing/
+Plugin URI: https://wordpress.org/plugins/wp-job-manager-contact-listing/
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=contact@appthemer.com&item_name=Donation+for+Astoundify WP Job Manager Contact Listing
 Contributors: spencerfinnell
 Tags: job, job listing, job apply, gravity forms, wp job manager, gravity forms, gravityforms, ninja forms, ninjaforms, contact form 7, cf7
 Requires at least: 3.5
 Tested up to: 3.9.1
-Stable Tag: 1.0.1
+Stable Tag: 1.0.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -33,18 +33,16 @@ The plugin can also be used on any theme but no extra styling (outside the CSS t
 
 = What settings do I need for Gravity Forms? =
 
-**Video Tutorial:** https://vimeo.com/85469722
+**Video Tutorial:** https://vimeo.com/85469722/
 
 You **must** create a *hidden* field with the following specific settings:
 
-* **Label:** Application Email
-* **Allow field to be dynamically populated:** `application_email`
-
-[View an image of the settings](https://i.cloudup.com/XfRsp5B1VH.png)
+* **Label:** Listing ID
+* **Allow field to be dynamically populated:** `{entry_id}`
 
 The Job/Resume listing must also have an email address associated with it, not a URL to a website.
 
-**Next**, create a new form notification with the "Send To" field set to "Email" and "dummy@dummy.com" as the value.
+**Next**, create a new form notification with the "Send To" field set to "Email" and "no-reply@listingowner.com" as the value.
 
 = What settings do I need for Ninja Forms? =
 
@@ -52,10 +50,8 @@ The Job/Resume listing must also have an email address associated with it, not a
 
 You **must** create a *hidden* field with the following specific settings:
 
-* **Label:** `application_email`
-* **Default Value:** `Post/Page ID`
-
-[View an image of the settings](https://i.cloudup.com/pnfVzYBFiN.png)
+* **Label:** `Listing ID`
+* **Default Value:** `Post/Page ID (if available)`
 
 The Job/Resume listing must also have an email address associated with it, not a URL to a website.
 
@@ -78,6 +74,11 @@ If you have purchased Jobify and still have questions, please post on our dedica
 3. Visit the FAQ for specifics on each form plugin.
 
 == Changelog ==
+
+= 1.0.2: August 5, 2014 =
+
+* Fix: Make sure the correct instance of Contact Form 7 submission form is always found.
+* Fix: Update README to reflect new field settings.
 
 = 1.0.1: July 24, 2014 =
 
