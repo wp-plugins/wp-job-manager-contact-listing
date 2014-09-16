@@ -7,20 +7,12 @@
  *
  * @return void
  */
-abstract class Astoundify_Job_Manager_Contact_Listing_Form extends Astoundify_Job_Manager_Contact_Listing {
+class Astoundify_Job_Manager_Contact_Listing_Form extends Astoundify_Job_Manager_Contact_Listing {
 
 	/**
 	 * @var $jobs_form_id
 	 */
 	public $forms;
-
-	/**
-	 * Form-specific methods
-	 */
-	abstract protected function setup_actions();
-	abstract protected function get_forms();
-	abstract protected function output_form($form);
-	abstract protected function notification_email($arg1, $arg2, $arg3);
 
 	/**
 	 * Set the form values, remove the default application template
@@ -53,7 +45,10 @@ abstract class Astoundify_Job_Manager_Contact_Listing_Form extends Astoundify_Jo
 
 		// Output the shortcode
 		remove_action( 'job_manager_application_details_email', array( $job_manager->post_types, 'application_details_email' ) );
-		add_action( 'job_manager_application_details_email', array( $this, 'job_manager_application_details_email' ) );
+
+		if ( ! get_option( 'resume_manager_force_application' ) ) {
+			add_action( 'job_manager_application_details_email', array( $this, 'job_manager_application_details_email' ) );
+		}
 
 		if ( class_exists( 'WP_Resume_Manager' ) ) {
 			global $resume_manager;
